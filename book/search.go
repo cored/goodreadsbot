@@ -1,18 +1,14 @@
 package book
 
+import "github.com/cored/goodreadsbot/goodreads"
+
 type BookView struct {
 	Title string
 	Image string
 }
 
-type Book struct {
-	Id       int
-	Title    string
-	ImageUrl string
-}
-
 type SearchAdapter interface {
-	Find(text string) []*Book
+	Find(text string) []*goodreads.Book
 }
 
 func Search(text string, searchAdapter SearchAdapter) []*BookView {
@@ -25,6 +21,6 @@ func Search(text string, searchAdapter SearchAdapter) []*BookView {
 	return bookViews
 }
 
-func buildBookViewsFor(book *Book) *BookView {
-	return &BookView{Title: book.Title, Image: book.ImageUrl}
+func buildBookViewsFor(book *goodreads.Book) *BookView {
+	return &BookView{Title: book.Title, Image: book.ImageURL}
 }

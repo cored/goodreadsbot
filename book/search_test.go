@@ -3,14 +3,15 @@ package book
 import (
 	"testing"
 
+	"github.com/cored/goodreadsbot/goodreads"
 	"github.com/stretchr/testify/assert"
 )
 
 type FakeSearch struct {
-	Books []*Book
+	Books []*goodreads.Book
 }
 
-func (fs *FakeSearch) Find(text string) []*Book {
+func (fs *FakeSearch) Find(text string) []*goodreads.Book {
 	return fs.Books
 }
 
@@ -25,21 +26,21 @@ func TestSearch(t *testing.T) {
 			"Passing a word included in various book titles",
 			"hunger",
 			&FakeSearch{
-				Books: []*Book{
-					&Book{
-						Id:       -1,
+				Books: []*goodreads.Book{
+					&goodreads.Book{
+						ID:       "-1",
 						Title:    "The Hunger Games",
-						ImageUrl: "http://hungergames1.com",
+						ImageURL: "http://hungergames1.com",
 					},
-					&Book{
-						Id:       -1,
+					&goodreads.Book{
+						ID:       "-1",
 						Title:    "The Hunger Games 2",
-						ImageUrl: "http://hungergames2.com",
+						ImageURL: "http://hungergames2.com",
 					},
-					&Book{
-						Id:       -1,
+					&goodreads.Book{
+						ID:       "-1",
 						Title:    "The Hunger Games 3",
-						ImageUrl: "http://hungergames3.com",
+						ImageURL: "http://hungergames3.com",
 					},
 				},
 			},
