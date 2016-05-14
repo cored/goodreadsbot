@@ -14,7 +14,7 @@ func TestFind(t *testing.T) {
 	}{
 		{
 			"Passing a word included in various book titles",
-			"hunger",
+			"The Hunger Game #1",
 			[]Book{},
 		},
 	}
